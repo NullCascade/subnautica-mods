@@ -1,9 +1,4 @@
-﻿using BepInEx;
-using HarmonyLib;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.IO;
-using System;
+﻿using HarmonyLib;
 
 namespace DataCustomizer.Patches
 {

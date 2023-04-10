@@ -1,6 +1,5 @@
 ﻿using SMLHelper.V2.Handlers;
 using System;
-using UnityEngine;
 
 namespace DataCustomizer.Utils
 {

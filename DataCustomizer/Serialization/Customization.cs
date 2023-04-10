@@ -1,13 +1,6 @@
-﻿using BepInEx;
-using Newtonsoft.Json.Linq;
-using SMLHelper.V2.Handlers;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static CraftData;
+using SMLHelper.V2.Handlers;
 
 namespace DataCustomizer
 {

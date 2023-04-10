@@ -1,18 +1,11 @@
-﻿using BepInEx;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
-using HarmonyLib;
-using SMLHelper.V2.Json;
-using SMLHelper.V2.Json.ExtensionMethods;
-using SMLHelper.V2.Utility;
-using System.IO;
-using System.Xml.Linq;
-using UnityEngine;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
-using System;
-using SMLHelper.V2.Handlers;
+using HarmonyLib;
 
 namespace DataCustomizer
 {
