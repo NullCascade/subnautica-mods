@@ -30,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
@@ -67,13 +68,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MonoBehaviours\GeyserSpawn.cs" />
+    <Compile Include="MonoBehaviours\GeyserSpawner.cs" />
     <Compile Include="Patches\GeyserPatches.cs" />
+    <Compile Include="Patches\ProtobufSerializerPrecompiledPatches.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\PrefabUtils.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MonoBehaviours\" />
+    <Compile Include="Utils\SerializerUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

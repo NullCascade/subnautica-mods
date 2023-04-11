@@ -1,9 +1,7 @@
 ﻿using BepInEx;
-using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
 using ResourcefulGeysers.Utils;
-using UnityEngine;
 using UWE;
 
 namespace ResourcefulGeysers
@@ -18,11 +16,22 @@ namespace ResourcefulGeysers
         private static readonly Harmony Harmony = new Harmony(MyGUID);
         public static ManualLogSource Log = new ManualLogSource(PluginName);
 
+        public static bool Enabled = true;
+        public static float ChunkChance { get; set; } = 0.1f;
+        public static int MinChunkCount { get; set; } = 10;
+        public static int MaxChunkCount { get; set; } = 10;
+        public static float MaxSpawnOffset { get; set; } = 2.0f;
+        public static float MaxSpawnVelocity { get; set; } = 100.0f;
+        public static int MaxSpawnedObjects = 10;
+        public static double SpawnLifetime = 60.0;
+
         private void Awake()
         {
             Log = Logger;
             Harmony.PatchAll();
             CoroutineHost.StartCoroutine(PrefabUtils.GetPrefabs());
+
+            SerializerUtils.RegisterSerializer<MonoBehaviours.GeyserSpawn>();
         }
 
         /// <summary>
