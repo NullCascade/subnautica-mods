@@ -2,11 +2,10 @@
 using ProtoBuf;
 using UnityEngine;
 using ResourcefulGeysers;
-using ResourcefulGeysers.Utils;
 
 // MonoBehaviour serialization don't seem to be supported outside the global namespace.
 [ProtoContract]
-public class GeyserSpawn : MonoBehaviour
+public class GeyserSpawn : MonoBehaviour, IProtoEventListener
 {
     [ProtoMember(1)]
     public int Version = 1;
@@ -77,7 +76,7 @@ public class GeyserSpawn : MonoBehaviour
         }
 
         Spawner.SpawnedObjects.Add(this);
-        //Plugin.Log.LogDebug($"Restored geyser spawn at {gameObject.transform.position}. It will expire in {ExpireTime - DayNightCycle.main.timePassed} seconds");
+        Plugin.Log.LogDebug($"Restored geyser spawn at {gameObject.transform.position}. It will expire in {ExpireTime - DayNightCycle.main.timePassed} seconds");
     }
 
     public bool ExpireIfNeeded()
@@ -92,5 +91,15 @@ public class GeyserSpawn : MonoBehaviour
         Destroy(this);
 
         return true;
+    }
+
+    public void OnProtoSerialize(ProtobufSerializer serializer)
+    {
+        GeyserId = Spawner?.gameObject.GetComponent<UniqueIdentifier>()?.Id;
+    }
+
+    public void OnProtoDeserialize(ProtobufSerializer serializer)
+    {
+
     }
 }
