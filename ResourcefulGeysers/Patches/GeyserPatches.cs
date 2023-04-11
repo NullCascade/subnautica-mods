@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using ResourcefulGeysers.MonoBehaviours;
 
 namespace ResourcefulGeysers.Patches
 {

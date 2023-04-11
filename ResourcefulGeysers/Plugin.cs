@@ -31,7 +31,16 @@ namespace ResourcefulGeysers
             Harmony.PatchAll();
             CoroutineHost.StartCoroutine(PrefabUtils.GetPrefabs());
 
-            SerializerUtils.RegisterSerializer<MonoBehaviours.GeyserSpawn>();
+            SerializerUtils.RegisterSerializer<GeyserSpawn>();
+
+#if DEBUG
+            Log.LogDebug($"Setting spawner to use debug values.");
+            ChunkChance = 1.0f;
+            MinChunkCount = 10;
+            MaxChunkCount = 100;
+            MaxSpawnedObjects = 500;
+            SpawnLifetime = 30.0;
+#endif
         }
 
         /// <summary>

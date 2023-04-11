@@ -33,6 +33,7 @@ namespace ResourcefulGeysers.Utils
             }
 
             ProtobufSerializerPrecompiled.knownTypes[type] = DispatchingTypeNumber;
+            Plugin.Log.LogDebug($"Registered serializable type {type.FullName}");
         }
     }
 }
