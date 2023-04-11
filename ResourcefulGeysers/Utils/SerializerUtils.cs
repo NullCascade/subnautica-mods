@@ -42,6 +42,9 @@ namespace ResourcefulGeysers.Utils
 
             // Store our temporary key so we know that this type is handled by our utility.
             ProtobufSerializerPrecompiled.knownTypes[type] = DispatchingTypeNumber;
+
+            // We also need to whitelist the component.
+            ProtobufSerializer.componentWhitelist.Add(type.FullName);
         }
     }
 }

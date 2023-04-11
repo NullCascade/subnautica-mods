@@ -24,13 +24,16 @@ namespace ResourcefulGeysers.Patches
                 return true;
             }
 
+            var positionBefore = writer.position64;
             serializer.Write(obj, writer);
+            Plugin.Log.LogDebug($"Wrote '{type.FullName}' ({writer.position64 - positionBefore} bytes).");
+
             return false;
         }
 
         [HarmonyPatch(nameof(ProtobufSerializerPrecompiled.Deserialize))]
         [HarmonyPrefix]
-        public static bool Deserialize_Prefix(ProtobufSerializerPrecompiled __instance, int num, object obj, ProtoReader reader)
+        public static bool Deserialize_Prefix(ProtobufSerializerPrecompiled __instance, ref object __result, int num, object obj, ProtoReader reader)
         {
             if (num != SerializerUtils.DispatchingTypeNumber)
             {
@@ -44,7 +47,10 @@ namespace ResourcefulGeysers.Patches
                 return true;
             }
 
-            serializer.Read(obj, reader);
+            var positionBefore = reader.position64;
+            __result = serializer.Read(obj, reader);
+            Plugin.Log.LogDebug($"Read '{type.FullName}' ({reader.position64 - positionBefore} bytes).");
+
             return false;
         }
     }

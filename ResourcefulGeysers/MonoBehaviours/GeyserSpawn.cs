@@ -11,16 +11,21 @@ public class GeyserSpawn : MonoBehaviour, IProtoEventListener
     public int Version = 1;
 
     [ProtoMember(2)]
-    [AssertNotNull]
     public string GeyserId = null;
 
     [ProtoMember(3)]
     public double ExpireTime = 0.0;
 
-    public GeyserSpawner Spawner;
+    public GeyserSpawner Spawner = null;
 
     public static GeyserSpawn Create(GeyserSpawner spawner, GameObject prefab)
     {
+        if (spawner == null)
+        {
+            Plugin.Log.LogDebug($"Why is this being created with no spawner? {Environment.StackTrace}");
+            return null;
+        }
+
         var instance = Instantiate(prefab);
 
         var spawn = instance.AddComponent<GeyserSpawn>();
@@ -50,7 +55,7 @@ public class GeyserSpawn : MonoBehaviour, IProtoEventListener
 
     private void RestoreIfNeeded()
     {
-        if (string.IsNullOrEmpty(GeyserId))
+        if (string.IsNullOrWhiteSpace(GeyserId))
         {
             return;
         }
@@ -64,7 +69,7 @@ public class GeyserSpawn : MonoBehaviour, IProtoEventListener
         if (!UniqueIdentifier.TryGetIdentifier(GeyserId, out UniqueIdentifier uniqueIdentifier))
         {
             GeyserId = null;
-            throw new Exception($"Could not resolve unique identifier {GeyserId} when trying to restore geyser spawner!");
+            throw new Exception($"Could not resolve unique identifier '{GeyserId}' when trying to restore geyser spawner!");
         }
 
         var geyserGameObject = uniqueIdentifier.gameObject;
@@ -72,10 +77,11 @@ public class GeyserSpawn : MonoBehaviour, IProtoEventListener
         Spawner = GeyserSpawner.EnsureOn(geyserGameObject);
         if (Spawner == null)
         {
-            throw new Exception($"Could not get spawner!");
+            throw new Exception($"Could not ensure spawner!");
         }
 
         Spawner.SpawnedObjects.Add(this);
+
         Plugin.Log.LogDebug($"Restored geyser spawn at {gameObject.transform.position}. It will expire in {ExpireTime - DayNightCycle.main.timePassed} seconds");
     }
 
@@ -95,7 +101,16 @@ public class GeyserSpawn : MonoBehaviour, IProtoEventListener
 
     public void OnProtoSerialize(ProtobufSerializer serializer)
     {
-        GeyserId = Spawner?.gameObject.GetComponent<UniqueIdentifier>()?.Id;
+        GeyserId = null;
+
+        if (Spawner == null)
+        {
+            Plugin.Log.LogDebug($"Can't serialize get geyser id. No spawner specified.");
+            return;
+        }
+
+        GeyserId = Spawner.gameObject.GetComponent<UniqueIdentifier>().Id;
+        Plugin.Log.LogDebug($"Saving geyser id {GeyserId}");
     }
 
     public void OnProtoDeserialize(ProtobufSerializer serializer)
