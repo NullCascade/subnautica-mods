@@ -5,12 +5,17 @@ using ResourcefulGeysers;
 using ResourcefulGeysers.Utils;
 
 // MonoBehaviour serialization don't seem to be supported outside the global namespace.
-public class GeyserSpawn : MonoBehaviour, ISaveSupported
+[ProtoContract]
+public class GeyserSpawn : MonoBehaviour
 {
+    [ProtoMember(1)]
     public int Version = 1;
 
+    [ProtoMember(2)]
+    [AssertNotNull]
     public string GeyserId = null;
 
+    [ProtoMember(3)]
     public double ExpireTime = 0.0;
 
     public GeyserSpawner Spawner;
@@ -87,43 +92,5 @@ public class GeyserSpawn : MonoBehaviour, ISaveSupported
         Destroy(this);
 
         return true;
-    }
-
-    public void OnProtoSerializeObject(ProtoWriter writer)
-    {
-        ProtoWriter.WriteFieldHeader(1, WireType.Variant, writer);
-        ProtoWriter.WriteInt32(Version, writer);
-
-        GeyserId = Spawner?.gameObject.GetComponent<UniqueIdentifier>()?.Id;
-        if (GeyserId != null)
-        {
-            ProtoWriter.WriteFieldHeader(2, WireType.String, writer);
-            ProtoWriter.WriteString(GeyserId, writer);
-        }
-
-        ProtoWriter.WriteFieldHeader(3, WireType.Fixed64, writer);
-        ProtoWriter.WriteDouble(ExpireTime, writer);
-
-        //Plugin.Log.LogDebug($"Serialized object at {gameObject.transform.position} with GeyserId {GeyserId}");
-    }
-
-    public void OnProtoDesrializeObject(ProtoReader reader)
-    {
-        for (int i = reader.ReadFieldHeader(); i > 0; i = reader.ReadFieldHeader())
-        {
-            switch (i)
-            {
-                case 1:
-                    Version = reader.ReadInt32();
-                    break;
-                case 2:
-                    GeyserId = reader.ReadString();
-                    break;
-                case 3:
-                    ExpireTime = reader.ReadDouble();
-                    break;
-            }
-        }
-        //Plugin.Log.LogDebug($"Deserialized object at {gameObject.transform.position} with GeyserId {GeyserId}");
     }
 }
