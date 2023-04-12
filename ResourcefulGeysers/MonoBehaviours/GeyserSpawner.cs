@@ -13,7 +13,7 @@ public class GeyserSpawner : MonoBehaviour
         var spawner = geyser.GetComponent<GeyserSpawner>();
         if (spawner == null)
         {
-            Plugin.Log.LogDebug($"Adding GeyserSpawner to geyser at {geyser.transform.position}");
+            Plugin.Log.LogDebug($"Adding GeyserSpawner to geyser '{geyser.GetComponent<UniqueIdentifier>()?.Id}' at {geyser.transform.position}");
             spawner = geyser.AddComponent<GeyserSpawner>();
         }
 

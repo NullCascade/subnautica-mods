@@ -68,8 +68,9 @@ public class GeyserSpawn : MonoBehaviour, IProtoEventListener
 
         if (!UniqueIdentifier.TryGetIdentifier(GeyserId, out UniqueIdentifier uniqueIdentifier))
         {
+            var exception = new Exception($"Could not resolve unique identifier '{GeyserId}' when trying to restore geyser spawner! {Environment.StackTrace}");
             GeyserId = null;
-            throw new Exception($"Could not resolve unique identifier '{GeyserId}' when trying to restore geyser spawner!");
+            throw exception;
         }
 
         var geyserGameObject = uniqueIdentifier.gameObject;
@@ -82,7 +83,9 @@ public class GeyserSpawn : MonoBehaviour, IProtoEventListener
 
         Spawner.SpawnedObjects.Add(this);
 
-        Plugin.Log.LogDebug($"Restored geyser spawn at {gameObject.transform.position}. It will expire in {ExpireTime - DayNightCycle.main.timePassed} seconds");
+        Plugin.Log.LogDebug($"Restored geyser spawn from {GeyserId} at {gameObject.transform.position}. It will expire in {ExpireTime - DayNightCycle.main.timePassed} seconds. {Environment.StackTrace}");
+
+        GeyserId = null;
     }
 
     public bool ExpireIfNeeded()
