@@ -3,7 +3,7 @@
 	"Author": "Ellinger74, Quintuple5, NullCascade",
 	"Version": "1.0.0",
 	"Priority": -100,
-	"Data": {
+	"ModifyTechTypes": {
 		"Accumulator": {
 			"CraftAmount": 1,
 			"Ingredients": {

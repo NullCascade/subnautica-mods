@@ -3,7 +3,7 @@
 	"Author": "M3dicCookie",
 	"Version": "1.0.0",
 	"Priority": -100,
-	"Data": {
+	"ModifyTechTypes": {
 		"AquariumFragment": {
 			"FragmentsToScan": 4
 		},

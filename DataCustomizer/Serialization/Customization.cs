@@ -10,9 +10,9 @@ namespace DataCustomizer
         public string Author { get; set; }
         public string Version { get; set; }
         public int Priority { get; set; } = 0;
-        public Dictionary<string, DataEntry> Data { get; set; }
+        public Dictionary<string, ModifyTechTypeEntry> ModifyTechTypes { get; set; }
 
-        internal class DataEntry
+        internal class ModifyTechTypeEntry
         {
             public int? FragmentsToScan { get; set; }
             public float? FragmentScanTime { get; set; }
@@ -132,7 +132,7 @@ namespace DataCustomizer
         public void ApplyData()
         {
             Plugin.Log.LogDebug($"Applying customization '{Name}' v{Version} by {Author}...");
-            foreach (var data in Data)
+            foreach (var data in ModifyTechTypes)
             {
                 try
                 {
