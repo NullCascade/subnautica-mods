@@ -9,8 +9,6 @@ using HarmonyLib;
 
 namespace DataCustomizer
 {
-    // TODO Review this file and update to your own requirements.
-
     [BepInPlugin(MyGUID, PluginName, VersionString)]
     public class Plugin : BaseUnityPlugin
     {
@@ -21,9 +19,6 @@ namespace DataCustomizer
         private static readonly Harmony Harmony = new Harmony(MyGUID);
         public static ManualLogSource Log = new ManualLogSource(PluginName);
 
-        /// <summary>
-        /// Initialise the configuration settings and patch methods
-        /// </summary>
         private void Awake()
         {
             Log = Logger;
@@ -69,30 +64,6 @@ namespace DataCustomizer
                 {
                     Plugin.Log.LogError($"Could not apply customization: {e.Message}");
                 }
-            }
-        }
-
-        /// <summary>
-        /// Code executed every frame. See below for an example use case
-        /// to detect keypress via custom configuration.
-        /// </summary>
-        // TODO - Add your code here or remove this section if not required.
-        private void Update()
-        {
-
-        }
-
-        /// <summary>
-        /// Method to handle changes to configuration made by the player
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ConfigSettingChanged(object sender, System.EventArgs e)
-        {
-            // Check if null and return
-            if (!(e is SettingChangedEventArgs))
-            {
-                return;
             }
         }
     }

@@ -3,9 +3,6 @@ using System;
 
 namespace DataCustomizer.Utils
 {
-    /// <summary>
-    /// Static utilities class for common functions and properties to be used within your mod code
-    /// </summary>
     internal static class ModUtils
     {
         public static TechType ParseTechType(string name)
