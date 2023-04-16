@@ -1,8 +1,16 @@
 # NullCascade's Subnautica Mods
 
-## DataCustomizer
+## Customized Sea Treaders
 
-- Download: [GitHub](https://github.com/NullCascade/subnautica-mods/raw/master/Releases/DataCustomizer%20v1.0.0.7z)
+- Download: [NexusMods](https://www.nexusmods.com/subnautica/mods/1253)
 - Requires: [BepInEx](https://www.nexusmods.com/subnautica/mods/1108), [SMLHelper](https://www.nexusmods.com/subnautica/mods/113)
 
-This is a json-supporting content patcher to tide me over until CustomCraft gets updated for the Living Large patch. It loads files in the data folder, and edits items as appropriate. Examples are available in the [DataCustomizer Mods](https://github.com/NullCascade/subnautica-mods/tree/master/DataCustomizer%20Mods) directory. This comes with files based on [Realistic Recipes and Increased Difficulty](https://www.nexusmods.com/subnautica/mods/88?) and [Fragment Requirement Booster](https://www.nexusmods.com/subnautica/mods/193?).
+Allows the customizing of what Sea Treaders can dig up with their steps. By default, it reduces the chance of a spawn in half, and allows limestone and sandstone chunks to appear.
+
+
+## Immersive Time Capsules
+
+- Download: [NexusMods](https://www.nexusmods.com/subnautica/mods/1252)
+- Requires: [BepInEx](https://www.nexusmods.com/subnautica/mods/1108)
+
+Removes time capsules from the game.
