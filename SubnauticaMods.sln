@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourcefulGeysers", "Resou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImmersiveTimeCapsules", "ImmersiveTimeCapsules\ImmersiveTimeCapsules.csproj", "{1EABC860-EA65-4B59-8171-D445D4E1DBBD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomizedSeaTreaders", "CustomizedSeaTreaders\CustomizedSeaTreaders.csproj", "{60B9BB46-6856-42C5-9306-A3ADB1C4AEDC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1EABC860-EA65-4B59-8171-D445D4E1DBBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EABC860-EA65-4B59-8171-D445D4E1DBBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EABC860-EA65-4B59-8171-D445D4E1DBBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60B9BB46-6856-42C5-9306-A3ADB1C4AEDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60B9BB46-6856-42C5-9306-A3ADB1C4AEDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60B9BB46-6856-42C5-9306-A3ADB1C4AEDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60B9BB46-6856-42C5-9306-A3ADB1C4AEDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

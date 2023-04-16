@@ -1,0 +1,14 @@
+﻿{
+  "ChanceForSpawn": 0.5,
+  "Spawns": {
+    "LimestoneChunk": {
+      "Weight": 1.0
+    },
+    "SandstoneChunk": {
+      "Weight": 1.0
+    },
+    "ShaleChunk": {
+      "Weight": 1.0
+    }
+  }
+}
