@@ -4,7 +4,7 @@ using BepInEx.Logging;
 using CustomizedSeaTreaders.Serialization;
 using HarmonyLib;
 using Newtonsoft.Json;
-using SMLHelper.V2.Handlers;
+using Nautilus;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -65,7 +65,7 @@ namespace CustomizedSeaTreaders
             {
                 return true;
             }
-            else if (TechTypeHandler.TryGetModdedTechType(name, out result))
+            else if (Nautilus.Handlers.EnumHandler.TryGetValue(name, out result))
             {
                 return true;
             }
